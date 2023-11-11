@@ -66,7 +66,7 @@ public class AuthenticateController : ControllerBase
         var result = await _userManager.CreateAsync(user, model.Password);
         if (!result.Succeeded)
         {
-            return BadRequest("User creation failed! Please check user details and try again.");
+            return BadRequest(string.Join(" ", result.Errors.Select(e => e.Description)));
         }
 
         return Ok();
