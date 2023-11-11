@@ -8,5 +8,5 @@ public class Expense
     public ExpenseType Type { get; set; }
     public decimal Value { get; set; }
     public int BudgetId { get; set; }
-    public required virtual Budget Budget { get; set; }
+    public virtual Budget? Budget { get; set; }
 }

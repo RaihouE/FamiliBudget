@@ -1,3 +1,4 @@
+using FamiliBudget.Api;
 using FamiliBudget.Api.Auth;
 using FamiliBudget.Api.Domain;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,6 +13,7 @@ ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
 builder.Services.AddDbContext<BudgetDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));
+builder.Services.AddServices();
 
 // For Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
