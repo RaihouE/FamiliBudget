@@ -1,3 +1,4 @@
+using FamiliBudget.App.Application;
 using FamiliBudget.App.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Logging;
@@ -46,6 +47,9 @@ builder.Services.AddSession(options =>
 {
 	options.IdleTimeout = TimeSpan.FromMinutes(1);
 });
+
+
+builder.Services.AddTransient<BudgetsViewModelBuilder>();
 
 builder.Services.AddAuthorization();
 

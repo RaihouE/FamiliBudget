@@ -1,4 +1,5 @@
 ﻿using FamiliBudget.App.Infrastructure.Auth;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -43,5 +44,18 @@ public class BudgetApiClient
 		}
 
 		return errors;
+	}
+
+	public async Task<BudgetResponse?> GetUserBudgets(string token)
+	{
+		_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+		var result = await _httpClient.GetAsync("api/budget");
+
+		result.EnsureSuccessStatusCode();
+
+		var jsonResult = await result.Content.ReadFromJsonAsync<BudgetResponse>();
+
+		return jsonResult;
 	}
 }
