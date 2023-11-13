@@ -1,0 +1,29 @@
+﻿@model FamiliBudget.App.Infrastructure.Auth.RegisterModel
+
+<div class="row">
+	<div class="col">
+		<h1 class="display-4">Welcome to Famili Budget App. Please login to begin</h1>
+		<form asp-action="Register" method="post">
+			<div class="mb-2" asp-validation-summary="All">
+			</div>
+			<div class="mb-2">
+				<label asp-for="UserName"></label>
+				<input type="text" asp-for="UserName" class="form-control" />
+				<span asp-validation-for="UserName"></span>
+			</div>
+			<div class="mb-2">
+				<label asp-for="Password"></label>
+				<input type="password" asp-for="Password" class="form-control" />
+				<span asp-validation-for="Password"></span>
+			</div>
+			<div class="mb-2">
+				<label asp-for="Email"></label>
+				<input type="email" asp-for="Email" class="form-control" />
+				<span asp-validation-for="Email"></span>
+			</div>
+			<div class="mb-2">
+				<button type="submit" class="btn btn-primary">Register</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -26,4 +26,22 @@ public class BudgetApiClient
 
 		return tokenResult;
 	}
+
+	public async Task<List<string>> Register(string username, string password, string email)
+	{
+		var errors = new List<string>();
+
+		var json = JsonSerializer.Serialize(new { username, password, email });
+		var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+		var result = await _httpClient.PostAsync("api/Authenticate/register", content);
+
+		if (!result.IsSuccessStatusCode)
+		{
+			var stringResult = await result.Content.ReadAsStringAsync();
+			errors.Add(stringResult);
+		}
+
+		return errors;
+	}
 }
